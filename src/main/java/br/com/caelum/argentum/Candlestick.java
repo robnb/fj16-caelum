@@ -52,4 +52,11 @@ public final class Candlestick {
 	public boolean isBaixa(){
 		return this.abertura > this.fechamento;
 	}
+	
+	@Override
+	public String toString() {
+		return "[Abertura "+abertura+"," +
+				"Fechamento "+fechamento+"," +
+				"Mínima "+minimo+",]";
+	}
 }
