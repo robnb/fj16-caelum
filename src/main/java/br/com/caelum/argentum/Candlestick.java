@@ -55,8 +55,12 @@ public final class Candlestick {
 	
 	@Override
 	public String toString() {
-		return "[Abertura "+abertura+"," +
-				"Fechamento "+fechamento+"," +
-				"Mínima "+minimo+",]";
+		return "[Abertura "+abertura+", " +
+				"Fechamento "+fechamento+", " +
+				"Mínima "+minimo+", " +
+				"Máxima "+maximo+", " +
+				"Volume "+volume+", " +
+				"Data "+data.get(Calendar.DAY_OF_MONTH)+"/"+data.get(Calendar.MONTH) +
+						"/"+data.get(Calendar.YEAR)+"]";
 	}
 }

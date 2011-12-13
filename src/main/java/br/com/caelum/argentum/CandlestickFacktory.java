@@ -6,10 +6,10 @@ import java.util.List;
 public class CandlestickFacktory {
 
 	public Candlestick constroiCandlestickParaData(Calendar data, List<Negocio> negocios){
-		double abertura = negocios.get(0).getPreco();
-		double fechamento = negocios.get(negocios.size()-1).getPreco();
-		double minimo = abertura;
-		double maximo = 0;
+		double abertura =  negocios.isEmpty()? 0 : negocios.get(0).getPreco();
+		double fechamento = negocios.isEmpty()? 0 : negocios.get(negocios.size()-1).getPreco();
+		double minimo = Double.MAX_VALUE;
+		double maximo = Double.MIN_VALUE;
 		double volume = 0;
 		
 		for(Negocio n : negocios){
