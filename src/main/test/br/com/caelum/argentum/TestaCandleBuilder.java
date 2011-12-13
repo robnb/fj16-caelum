@@ -2,7 +2,7 @@ package br.com.caelum.argentum;
 
 import java.util.GregorianCalendar;
 
-public class CandleBuilderTest {
+public class TestaCandleBuilder {
 
 	public static void main(String[] args) {
 		Candlestick candle = new CandleBuilder()
