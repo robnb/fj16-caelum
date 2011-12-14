@@ -24,6 +24,12 @@ public class CandlestickFacktory {
 				
 		return new Candlestick(abertura, fechamento, minimo, maximo, volume, data);
 	}
+
+	public boolean isMesmoDia(Calendar data1, Calendar data2) {
+		return data1.get(Calendar.DAY_OF_MONTH) == data2.get(Calendar.DAY_OF_MONTH)
+			&& data1.get(Calendar.MONTH) == data2.get(Calendar.MONTH)
+			&& data1.get(Calendar.YEAR) == data2.get(Calendar.YEAR);
+	}
 	
 	
 }

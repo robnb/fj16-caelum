@@ -2,6 +2,7 @@ package br.com.caelum.argentum;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.Assert;
@@ -59,6 +60,15 @@ public class CandlestickFactoryTest {
 		Assert.assertEquals(40.5, candle.getMinimo(), 0.00001);
 		Assert.assertEquals(40.5, candle.getMaximo(), 0.00001);
 		Assert.assertEquals(4050.0, candle.getVolume(), 0.00001);
+	}
+	
+	@Test
+	public void testComparaMesmoDiaCalendar(){
+		CandlestickFacktory fabrica = new CandlestickFacktory();
+		Calendar data1 = new GregorianCalendar(2008, 12, 25, 8, 30);
+		Calendar data2 = new GregorianCalendar(2008, 12, 25, 10, 30);
+		
+		Assert.assertTrue(fabrica.isMesmoDia(data1, data2));
 	}
 	
 }
