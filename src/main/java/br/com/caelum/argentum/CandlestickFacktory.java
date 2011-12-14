@@ -1,5 +1,6 @@
 package br.com.caelum.argentum;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -29,6 +30,29 @@ public class CandlestickFacktory {
 		return data1.get(Calendar.DAY_OF_MONTH) == data2.get(Calendar.DAY_OF_MONTH)
 			&& data1.get(Calendar.MONTH) == data2.get(Calendar.MONTH)
 			&& data1.get(Calendar.YEAR) == data2.get(Calendar.YEAR);
+	}
+
+	public List<Candlestick> constroiCandles(List<Negocio> todosNegocios) {
+		
+		List<Candlestick> candles = new ArrayList<Candlestick>();
+		
+		List<Negocio> negociosMesmoDia = new ArrayList<Negocio>();
+		Calendar dataPrimeiro = todosNegocios.get(0).getData();
+		
+		for(Negocio negocio : todosNegocios){
+			if(!isMesmoDia(dataPrimeiro, negocio.getData())){
+				candles.add(constroiCandlestickParaData(dataPrimeiro, negociosMesmoDia));
+				
+				negociosMesmoDia = new ArrayList<Negocio>();
+				dataPrimeiro = negocio.getData();
+			}
+			
+			negociosMesmoDia.add(negocio);
+		}
+		
+		candles.add(constroiCandlestickParaData(dataPrimeiro, negociosMesmoDia));
+		
+		return candles;
 	}
 	
 	
