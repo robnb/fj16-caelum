@@ -31,4 +31,34 @@ public class CandlestickFactoryTest {
 		Assert.assertEquals(16760.0, candle.getVolume(), 0.00001);
 	}
 	
+	@Test
+	public void testSemNegocios(){
+		Calendar hoje = Calendar.getInstance();
+		
+		List<Negocio> negocios = Arrays.asList();
+		
+		CandlestickFacktory fabrica = new CandlestickFacktory();
+		Candlestick candle = fabrica.constroiCandlestickParaData(hoje, negocios);
+		
+		Assert.assertEquals(0.0, candle.getVolume(), 0.00001);
+	}
+	
+	@Test
+	public void testComApenasUmNegocio(){
+		Calendar hoje = Calendar.getInstance();
+		
+		Negocio negocio1 = new Negocio(40.5, 100, hoje);
+		
+		List<Negocio> negocios = Arrays.asList(negocio1);
+		
+		CandlestickFacktory fabrica = new CandlestickFacktory();
+		Candlestick candle = fabrica.constroiCandlestickParaData(hoje, negocios);
+		
+		Assert.assertEquals(40.5, candle.getAbertura(), 0.00001);
+		Assert.assertEquals(40.5, candle.getFechamento(), 0.00001);
+		Assert.assertEquals(40.5, candle.getMinimo(), 0.00001);
+		Assert.assertEquals(40.5, candle.getMaximo(), 0.00001);
+		Assert.assertEquals(4050.0, candle.getVolume(), 0.00001);
+	}
+	
 }
