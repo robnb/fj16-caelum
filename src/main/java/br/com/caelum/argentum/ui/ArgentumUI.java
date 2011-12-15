@@ -1,5 +1,8 @@
 package br.com.caelum.argentum.ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,6 +36,7 @@ public class ArgentumUI {
 	private void montaBotaoSair() {
 		
 		JButton botaoSair = new JButton("Sair");
+		botaoSair.addActionListener(new EventoSair());
 		painelPrincipal.add(botaoSair);
 		
 	}
@@ -40,6 +44,7 @@ public class ArgentumUI {
 	private void montaBotaoCarregar() {
 		
 		JButton botaoCarregar = new JButton("Carregar XML");
+		botaoCarregar.addActionListener(new EventoCarregar());
 		painelPrincipal.add(botaoCarregar);
 		
 	}
