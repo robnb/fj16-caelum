@@ -1,6 +1,7 @@
 package br.com.caelum.argentum.ui;
 
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class NegociosTableModel extends AbstractTableModel{
 
 	private final List<Negocio> negocios;
 	private final DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	private final NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 
 	
 	public NegociosTableModel(List<Negocio> negocios) {
@@ -33,7 +35,7 @@ public class NegociosTableModel extends AbstractTableModel{
 		Negocio n = negocios.get(rowIndex);
 		switch(columnIndex){
 		case 0:
-			return n.getPreco();
+			return numberFormat.format(n.getPreco());
 		case 1:
 			return n.getQuantidade();
 		case 2:
@@ -41,5 +43,20 @@ public class NegociosTableModel extends AbstractTableModel{
 		}
 		return null;
 	}
+
+	@Override
+	public String getColumnName(int column) {
+		switch(column){
+		case 0:
+			return "Preço";
+		case 1:
+			return "Quantidade";
+		case 2:
+			return "Data";
+		}
+		return null;
+	}
+	
+	
 	
 }

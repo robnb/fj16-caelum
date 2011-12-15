@@ -1,15 +1,18 @@
 package br.com.caelum.argentum.ui;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import br.com.caelum.argentum.Negocio;
@@ -28,12 +31,21 @@ public class ArgentumUI {
 	public void montaTela(){
 		montaJanela();
 		montaPainelPrincipal();
-
+		montaTitulo();
 		montaTabelaComScroll();
-
 		montaBotaoCarregar();
 		montaBotaoSair();
 		mostraJanela();
+	}
+
+	private void montaTitulo() {
+		
+		JLabel titulo = new JLabel("Lista de Negócios");
+		titulo.setFont(new Font("Verdana", Font.BOLD, 25));
+		titulo.setForeground(new Color(50, 50, 100));
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		painelPrincipal.add(titulo);
+		
 	}
 
 	private void mostraJanela() {
