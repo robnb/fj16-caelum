@@ -41,7 +41,7 @@ public class CandlestickFacktory {
 		
 		for(Negocio negocio : todosNegocios){
 			if(!isMesmoDia(dataPrimeiro, negocio.getData())){
-				candles.add(constroiCandlestickParaData(dataPrimeiro, negociosMesmoDia));
+				fechaCandle(candles, negociosMesmoDia, dataPrimeiro);
 				
 				negociosMesmoDia = new ArrayList<Negocio>();
 				dataPrimeiro = negocio.getData();
@@ -50,9 +50,14 @@ public class CandlestickFacktory {
 			negociosMesmoDia.add(negocio);
 		}
 		
-		candles.add(constroiCandlestickParaData(dataPrimeiro, negociosMesmoDia));
+		fechaCandle(candles, negociosMesmoDia, dataPrimeiro);
 		
 		return candles;
+	}
+
+	private boolean fechaCandle(List<Candle> candles,
+			List<Negocio> negociosMesmoDia, Calendar dataPrimeiro) {
+		return candles.add(constroiCandlestickParaData(dataPrimeiro, negociosMesmoDia));
 	}
 	
 	
