@@ -1,16 +1,19 @@
 package br.com.caelum.argentum.ui;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.border.LineBorder;
 
 public class ArgentumUI {
 	
 	private JFrame janela;
 	private JPanel painelPrincipal;
+	private JTable tabela;
 	
 	public static void main(String[] args) {
 		
@@ -20,6 +23,9 @@ public class ArgentumUI {
 	public void montaTela(){
 		montaJanela();
 		montaPainelPrincipal();
+		
+		montaTabelaComScroll();
+		
 		montaBotaoCarregar();
 		montaBotaoSair();
 		mostraJanela();
@@ -61,5 +67,20 @@ public class ArgentumUI {
 		janela = new JFrame("Argentum");
 		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+	}
+	
+	private void montaTabelaComScroll(){
+		
+		tabela = new JTable();
+		tabela.setBorder(new LineBorder(Color.magenta));
+		tabela.setGridColor(Color.red);
+		tabela.setShowGrid(true);
+		
+		JScrollPane scroll = new JScrollPane();
+		scroll.getViewport().setBorder(null);
+		scroll.getViewport().add(tabela);
+		scroll.setSize(450, 450);
+		
+		painelPrincipal.add(scroll);
 	}
 }

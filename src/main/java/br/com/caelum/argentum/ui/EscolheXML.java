@@ -2,6 +2,7 @@ package br.com.caelum.argentum.ui;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JFileChooser;
@@ -20,22 +21,19 @@ public class EscolheXML {
 	
 	}
 	
-	public void escolher(){
+	public List<Negocio> escolher(){
 		try {
-			JFileChooser chooser = new JFileChooser(".");
+			JFileChooser chooser = new JFileChooser("/home/lab2335/Desktop");
 			chooser.setFileFilter(new FileNameExtensionFilter("Apenas XML", "xml"));
 			int retorno = chooser.showOpenDialog(null);
 
 			if(retorno ==JFileChooser.APPROVE_OPTION){
 				FileReader reader = new FileReader(chooser.getSelectedFile());
 				List<Negocio> negocios = new LeitorXML().carrega(reader);
-
-				Negocio primeiroNegocio = negocios.get(0);
-				String msg = "Primeiro negócio do dia: " + primeiroNegocio.getPreco();
-				JOptionPane.showMessageDialog(null, msg);
 			}
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Nada foi selecionado.");
 		}
+		return Collections.emptyList();
 	}
 }
