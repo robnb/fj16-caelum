@@ -30,6 +30,7 @@ public class EscolheXML {
 			if(retorno ==JFileChooser.APPROVE_OPTION){
 				FileReader reader = new FileReader(chooser.getSelectedFile());
 				List<Negocio> negocios = new LeitorXML().carrega(reader);
+				return negocios;
 			}
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Nada foi selecionado.");
