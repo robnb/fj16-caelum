@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CandlestickFacktory {
 
-	public Candlestick constroiCandlestickParaData(Calendar data, List<Negocio> negocios){
+	public Candle constroiCandlestickParaData(Calendar data, List<Negocio> negocios){
 		double abertura =  negocios.isEmpty()? 0 : negocios.get(0).getPreco();
 		double fechamento = negocios.isEmpty()? 0 : negocios.get(negocios.size()-1).getPreco();
 		double minimo = Double.MAX_VALUE;
@@ -23,7 +23,7 @@ public class CandlestickFacktory {
 			volume += n.getVolume();
 		}
 				
-		return new Candlestick(abertura, fechamento, minimo, maximo, volume, data);
+		return new Candle(abertura, fechamento, minimo, maximo, volume, data);
 	}
 
 	public boolean isMesmoDia(Calendar data1, Calendar data2) {
@@ -32,9 +32,9 @@ public class CandlestickFacktory {
 			&& data1.get(Calendar.YEAR) == data2.get(Calendar.YEAR);
 	}
 
-	public List<Candlestick> constroiCandles(List<Negocio> todosNegocios) {
+	public List<Candle> constroiCandles(List<Negocio> todosNegocios) {
 		
-		List<Candlestick> candles = new ArrayList<Candlestick>();
+		List<Candle> candles = new ArrayList<Candle>();
 		
 		List<Negocio> negociosMesmoDia = new ArrayList<Negocio>();
 		Calendar dataPrimeiro = todosNegocios.get(0).getData();

@@ -14,7 +14,7 @@ public class TestaCandlestickFactoryComUmNegocioApenas {
 		List<Negocio> negocios = Arrays.asList(negocio1);
 
 		CandlestickFacktory fabrica = new CandlestickFacktory();
-		Candlestick candle = fabrica.constroiCandlestickParaData(hoje, negocios);
+		Candle candle = fabrica.constroiCandlestickParaData(hoje, negocios);
 
 		System.out.println(candle.getAbertura());
 		System.out.println(candle.getFechamento());

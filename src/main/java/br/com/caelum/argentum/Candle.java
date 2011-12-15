@@ -2,7 +2,7 @@ package br.com.caelum.argentum;
 
 import java.util.Calendar;
 
-public final class Candlestick {
+public final class Candle {
 
 	private final double abertura;
 	private final double fechamento;
@@ -11,7 +11,7 @@ public final class Candlestick {
 	private final double volume;
 	private final Calendar data;
 	
-	public Candlestick(double abertura, double fechamento, double minimo,
+	public Candle(double abertura, double fechamento, double minimo,
 			double maximo, double volume, Calendar data) {
 		this.abertura = abertura;
 		this.fechamento = fechamento;
