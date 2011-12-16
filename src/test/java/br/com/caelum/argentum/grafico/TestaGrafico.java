@@ -17,8 +17,8 @@ import br.com.caelum.argentum.indicadores.MediaMovelSimples;
 public class TestaGrafico {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		SerieTemporal serie = criaSerie(1,2,3,4,5);
-		GeradorDeGrafico g = new GeradorDeGrafico(serie, 3, 32);
+		SerieTemporal serie = criaSerie(1,2,3,4,5,6,7,8,8,9,9,4,3,2,1,2,2,4,5,6,7,8,9,10,11,10,6,3,2,6,7,8,9);
+		GeradorDeGrafico g = new GeradorDeGrafico(serie, 2, serie.getTotal()-1);
 		g.criaGrafico("Media movel simples do fechamento das acoes");
 		g.plotaIndicador(new MediaMovelSimples(new IndicadorFechamento()));
 		g.salvar(new FileOutputStream("grafico.png"));
