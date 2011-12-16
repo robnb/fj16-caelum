@@ -1,7 +1,9 @@
 package br.com.caelum.argentum.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -22,6 +24,7 @@ public class ArgentumUI {
 	private JFrame janela;
 	private JPanel painelPrincipal;
 	private JTable tabela;
+	private JPanel painelBotoes;
 
 	public static void main(String[] args) {
 
@@ -33,9 +36,15 @@ public class ArgentumUI {
 		montaPainelPrincipal();
 		montaTitulo();
 		montaTabelaComScroll();
+		montaPainelBotoes();
 		montaBotaoCarregar();
 		montaBotaoSair();
 		mostraJanela();
+	}
+
+	private void montaPainelBotoes() {
+		painelBotoes = new JPanel(new GridLayout());
+		painelPrincipal.add(painelBotoes, BorderLayout.SOUTH);
 	}
 
 	private void montaTitulo() {
@@ -44,7 +53,7 @@ public class ArgentumUI {
 		titulo.setFont(new Font("Verdana", Font.BOLD, 25));
 		titulo.setForeground(new Color(50, 50, 100));
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
-		painelPrincipal.add(titulo);
+		painelPrincipal.add(titulo, BorderLayout.NORTH);
 		
 	}
 
@@ -60,7 +69,7 @@ public class ArgentumUI {
 
 		JButton botaoSair = new JButton("Sair");
 		botaoSair.addActionListener(new EventoSair());
-		painelPrincipal.add(botaoSair);
+		painelBotoes.add(botaoSair);
 
 	}
 
@@ -75,13 +84,14 @@ public class ArgentumUI {
 				tabela.setModel(ntm);
 			}
 		});
-		painelPrincipal.add(botaoCarregar);
+		painelBotoes.add(botaoCarregar);
 
 	}
 
 	private void montaPainelPrincipal() {
 
 		painelPrincipal = new JPanel();
+		painelPrincipal.setLayout(new BorderLayout());
 		janela.add(painelPrincipal);
 
 	}
@@ -105,6 +115,6 @@ public class ArgentumUI {
 		scroll.getViewport().add(tabela);
 		scroll.setSize(450, 450);
 
-		painelPrincipal.add(scroll);
+		painelPrincipal.add(scroll, BorderLayout.CENTER);
 	}
 }
