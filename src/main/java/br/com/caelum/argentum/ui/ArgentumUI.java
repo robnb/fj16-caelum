@@ -6,9 +6,11 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +19,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
 
 import br.com.caelum.argentum.Candle;
 import br.com.caelum.argentum.CandlestickFacktory;
@@ -33,6 +36,7 @@ public class ArgentumUI {
 	private JTable tabela;
 	private JPanel painelBotoes;
 	private JTabbedPane abas;
+	private JFormattedTextField campoDataInicio;
 
 	public static void main(String[] args) {
 
@@ -46,6 +50,7 @@ public class ArgentumUI {
 		montaAbas();
 		montaTabelaComScroll();
 		montaPainelBotoes();
+		montaCampoData();
 		montaBotaoCarregar();
 		montaBotaoSair();
 		mostraJanela();
@@ -158,5 +163,17 @@ public class ArgentumUI {
 		geradorDeGrafico.plotaIndicador(new MediaMovelSimples(new IndicadorFechamento()));
 		JPanel grafico = geradorDeGrafico.getPanel();
 		this.abas.setComponentAt(1, grafico);
+	}
+	
+	private void montaCampoData(){
+		try{
+			MaskFormatter mascara = new MaskFormatter("##/##/####");
+			mascara.setPlaceholderCharacter('_');
+			
+			campoDataInicio = new JFormattedTextField(mascara);
+			painelBotoes.add(campoDataInicio);
+		} catch (ParseException e){
+			e.printStackTrace();
+		}
 	}
 }
